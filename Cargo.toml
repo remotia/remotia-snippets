@@ -14,3 +14,6 @@ git = "https://github.com/remotia/remotia"
 branch = "develop"
 default-features = false
 features = ["buffer_utils", "codecs", "loggers", "profilation_utils"]
+
+[dependencies]
+rand = "0.8.5"
