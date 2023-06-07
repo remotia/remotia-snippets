@@ -15,3 +15,6 @@ features = ["rt-multi-thread"]
 path = "../remotia"
 default-features = false
 features = ["profilation"]
+
+[dependencies]
+rand = "0.8.4"

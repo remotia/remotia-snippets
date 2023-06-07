@@ -846,6 +846,7 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "bytes",
+ "log",
  "remotia-core",
 ]
 
@@ -853,6 +854,7 @@ dependencies = [
 name = "remotia-snippets"
 version = "0.1.0"
 dependencies = [
+ "rand",
  "remotia",
  "tokio",
 ]
