@@ -34,8 +34,8 @@ impl FrameProperties<u128> for FrameData {
         self.properties.insert(key.to_string(), value);
     }
 
-    fn get(&mut self, key: &str) -> u128 {
-        *self.properties.get(key).unwrap()
+    fn get(&self, key: &str) -> Option<u128> {
+        self.properties.get(key).copied()
     }
 }
 
@@ -44,12 +44,8 @@ impl FrameError<Error> for FrameData {
         self.error = Some(error);
     }
 
-    fn has_error(&mut self) -> bool {
-        self.error.is_some()
-    }
-
-    fn get_error(&mut self) -> Error {
-        self.error.unwrap()
+    fn get_error(&self) -> Option<Error> {
+        self.error
     }
 }
 

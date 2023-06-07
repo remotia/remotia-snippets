@@ -17,8 +17,8 @@ impl FrameProperties<u128> for FrameData {
         self.properties.insert(key.to_string(), value);
     }
 
-    fn get(&mut self, key: &str) -> u128 {
-        *self.properties.get(key).unwrap()
+    fn get(&self, key: &str) -> Option<u128> {
+        self.properties.get(key).copied()
     }
 }
 
