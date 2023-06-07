@@ -14,4 +14,4 @@ features = ["rt-multi-thread"]
 # branch = "develop"
 path = "../remotia"
 default-features = false
-features = ["buffer_utils", "codecs", "loggers", "profilation_utils"]
+features = ["profilation"]

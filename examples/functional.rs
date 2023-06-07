@@ -1,14 +1,32 @@
+use std::collections::HashMap;
+
 use remotia::pipeline::Pipeline;
 use remotia::pipeline::component::Component;
 use remotia::processors::functional::Function;
 use remotia::processors::ticker::Ticker;
-use remotia::time::add::TimestampAdder;
+use remotia::profilation::time::add::TimestampAdder;
+use remotia::traits::FrameProperties;
+
+#[derive(Debug, Default)]
+struct FrameData {
+    properties: HashMap<String, u128>
+}
+
+impl FrameProperties<u128> for FrameData {
+    fn set(&mut self, key: &str, value: u128) {
+        self.properties.insert(key.to_string(), value);
+    }
+
+    fn get(&mut self, key: &str) -> u128 {
+        *self.properties.get(key).unwrap()
+    }
+}
 
 #[tokio::main]
 async fn main() {
     println!("Hello functional processors!");
 
-    let handles = Pipeline::new()
+    let handles = Pipeline::<FrameData>::new()
         .link(
             Component::new()
                 .append(Ticker::new(1000))
