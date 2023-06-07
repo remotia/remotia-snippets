@@ -1,5 +1,5 @@
-use remotia::pipeline::ascode::AscodePipeline;
-use remotia::pipeline::ascode::component::Component;
+use remotia::pipeline::Pipeline;
+use remotia::pipeline::component::Component;
 use remotia::processors::containers::sequential::Sequential;
 use remotia::processors::debug::random_dropper::RandomFrameDropper;
 use remotia::processors::frame_drop::threshold::ThresholdBasedFrameDropper;
@@ -33,13 +33,12 @@ async fn main() {
             Some(frame_data)
         }));
 
-    let handles = AscodePipeline::new()
+    let handles = Pipeline::new()
         .link(Component::new()
             .append(generator)
             .append(dropper)
             .append(delay_check)
         )
-        .bind()
         .run();
 
     for handle in handles {
