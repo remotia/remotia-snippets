@@ -12,12 +12,12 @@ struct FrameData {
     properties: HashMap<String, u128>
 }
 
-impl FrameProperties<u128> for FrameData {
-    fn set(&mut self, key: &str, value: u128) {
+impl FrameProperties<String, u128> for FrameData {
+    fn set(&mut self, key: String, value: u128) {
         self.properties.insert(key.to_string(), value);
     }
 
-    fn get(&self, key: &str) -> Option<u128> {
+    fn get(&self, key: &String) -> Option<u128> {
         self.properties.get(key).copied()
     }
 }
