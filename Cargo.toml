@@ -6,8 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies.tokio]
-version = "1.14.0"
-features = ["rt-multi-thread"]
+version = "1.28.2"
+features = ["rt", "rt-multi-thread", "macros"]
 
 [dependencies.remotia]
 # git = "https://github.com/remotia/remotia"
